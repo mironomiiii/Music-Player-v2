@@ -1,13 +1,13 @@
 const myImage = new Image(300, 300);
 const HcoverImage = document.getElementById("cover");
 const HbackgroundImage = document.getElementById("background");
-const HbackgroundImage2 = document.getElementById("background2");
 
 const HtrackName = document.getElementById("title");
 const HalbumName = document.getElementById("album");
 const HartistName = document.getElementById("artist");
 const HtrackLink = document.getElementById("link");
 const HlistContent = document.getElementById("list-content");
+const BODY = document.body;
 
 let currentSong = {
   title: "",
@@ -21,7 +21,13 @@ let initLoad = true;
 let prevsURL = 0;
 
 myImage.onload = () => {
-  handleUpdateSong();
+  BODY.classList.add("fade-in-out");
+  setTimeout(() => {
+    BODY.classList.remove("fade-in-out");
+  }, 2000);
+  setTimeout(() => {
+    handleUpdateSong();
+  }, 1000);
 };
 
 const getUserRecent = async (user) => {
@@ -81,9 +87,7 @@ const handleRefreshDisplay = async () => {
   const cover = data.recenttracks.track[0].image[3]["#text"];
   const link = data.recenttracks.track[0].url;
   const album = data.recenttracks.track[0].album["#text"];
-  const prevbackground = data.recenttracks.track[1].image[3]["#text"];
 
-  HbackgroundImage2.src = prevbackground;
   currentSong = {
     title: songName,
     artist: artistName,
@@ -184,7 +188,11 @@ const handleUpdateSong = () => {
   HcoverImage.src = cover;
   HbackgroundImage.src = cover;
   HtrackLink.href = songlink;
-  HalbumName.innerHTML = album;
+  if (album == HtrackName) {
+    HalbumName.innerHTML = ""
+  } else {
+    HalbumName.innerHTML = album;
+  }
   //   console.log(isPlaying);
 };
 

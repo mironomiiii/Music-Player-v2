@@ -2,7 +2,6 @@
 .font-bold {
   font-family: "Nunito Sans", sans-serif;
   font-weight: bolder;
-  
 }
 .font-light {
   font-family: "Nunito Sans", sans-serif;
@@ -58,7 +57,7 @@ body {
 .metadata > h1,
 .metadata > h2,
 .metadata > h3 {
-  line-height: 25px;
+  line-height: 30px;
   margin: 0;
   text-align: center;
 }
@@ -178,35 +177,21 @@ body {
   object-fit: cover;
 }
 
-.background2 {
-  display: inline-flex;
-  width: 100dvw;
-  height: 100dvh;
-  position: absolute;
-  filter: brightness(50%) blur(10px);
-  justify-content: center;
-  align-items: center;
-  left: 0;
-  overflow: hidden;
-  top: 0px;
-  left: 0px;
-  z-index: -2;
-}
-.background2 > img {
-  min-width: 100%;
-  height: 100%;
-  object-fit: cover;
+.fade-in-out {
+  animation: 2s ease-in-out opacity-in-out;
 }
 
-.fade {
-    animation: 1s linear opacity;
-    z-index: -1;
-}
-@keyframes opacity {
-    0% {
-        opacity: 100%;
-    }
-    100% {
-        opacity: 0%;
-    }
+@keyframes opacity-in-out {
+  0% {
+    opacity: 100%;
+  }
+  45% {
+    opacity: 0%;
+  }
+  65% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
 }
