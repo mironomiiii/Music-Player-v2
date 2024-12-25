@@ -141,7 +141,7 @@ const listitem = (
   href = ""
 ) => `<li class="table-list">
   <p class="left"><span class="prevSong truncate">${title}</span><span class="duration">${duration}</span></p>
-  <p><span class="date">${lastPlayed}</span><a target="_blank" href="${href}"><img class="share" src="Frame.svg" alt="" /></a></p>
+  <p><span class="date">${lastPlayed}</span><a target="_blank" href="${href}"><img class="share" src="assets/Frame.svg" alt="" /></a></p>
 </li>`;
 
 const UpdateTableRecent = async (data) => {
@@ -216,6 +216,21 @@ const UpdateTableRecent = async (data) => {
   }
 };
 
+// parallax
+const map = (x, a, b, c, d) => (x - a) / (b - a) * (d - c) + c;
+
+function parallax(e)
+{
+  const bgX = map(e.x,0,window.innerWidth, 0, 1);
+  const bgY = map(e.y,0,window.innerHeight,0, 1);
+  HbackgroundImage.style.transform = `translate(${0 + bgX}%,${0 + bgY}%)`;
+
+  // wrapper parallax
+  // const tX = map(e.x, 0, window.innerWidth, 0, -2);
+  // const tY = map(e.y, 0, window.innerHeight, 0, -2);
+  // wrapper.style.transform = `translate(${0 + -tX}%,${0 + tY}%)`;
+}
+
 const handleUpdateSong = () => {
   const { title, artist, cover, songlink, album } = currentSong;
 
@@ -240,4 +255,5 @@ const main = () => {
   }, 3000);
 };
 
+window.onmousemove = parallax;
 main();

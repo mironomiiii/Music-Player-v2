@@ -3,17 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ono's music player</title>
+    <meta property="og:title" content="Soma" />
+    <meta property="og:description" content="beautiful now playing display for Last.fm" />
+    <title>Soma</title>
+    <link rel="icon" type="image/png" href="https://ono.s-ul.eu/0RepGSHA">
     <link rel="stylesheet" media="(min-width: 900px)" href="desktop.css" />
     <link rel="stylesheet" media="(max-width: 899px)" href="mobile.css" />
   </head>
   <body>
     <div id="login" class="login">
-        <div class="loginthing">
-          <h1>Enter your Last.fm username:</h1>
-        <input type="text" name="usernamething" id="loginput" placeholder="onofel">
-        <img id="loginButton" src="Send.svg" alt="" onclick="updateUsername()">
+      <div class="loginthing">
+        <div class="logo">
+          <img class="logoImg" src="assets/logo.svg" alt="" />
         </div>
+        <h1>Enter your Last.fm username:</h1>
+        <input
+          type="text"
+          name="usernamething"
+          id="loginput"
+          placeholder="onofel"
+        />
+        <div class="load">
+          <img
+          id="loginButton"
+          src="assets/Send.svg"
+          alt=""
+          onclick="updateUsername()"
+        />
+        </div>
+      </div>
+    </div>
+    <div class="main-logo">
+      <img class="main-logoImg" src="assets/logo.svg" alt="" />
     </div>
     <div id="wrapper" class="wrapper">
       <div class="metadata">
@@ -30,14 +51,16 @@
       </div>
       <div class="metadata">
         <h2 id="artist" class="artist font-bold"></h2>
-        <h3 class=" link">
-          <a id="link" target="_blank" class="font-light" href=""> open in last.fm </a>
+        <h3 class="link">
+          <a id="link" target="_blank" class="font-light" href="">
+            open in last.fm
+          </a>
         </h3>
       </div>
     </div>
+    <div class="gradient2"></div>
     <div id="bgWrapper" class="background">
-      <div class="gradient2"></div>
-      <img id="background" src="" alt="">
+      <img id="background" src="" alt="" />
     </div>
   </body>
   <script src="metadata.js"></script>
