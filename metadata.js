@@ -14,6 +14,7 @@ let username = "";
 let usernameValue = "";
 const input = document.getElementById("loginput");
 const loginScreen = document.getElementById("login");
+const call = document.getElementById("call")
 
 let currentSong = {
   title: "",
@@ -56,6 +57,7 @@ input.addEventListener("keypress", function (i) {
 const updateUsername = () => {
   const usernameValue = document.getElementById("loginput").value;
   username = usernameValue;
+  call.innerHTML = username
 };
 
 const getUserRecent = async (user) => {
