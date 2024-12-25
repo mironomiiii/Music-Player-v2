@@ -7,7 +7,13 @@ const HalbumName = document.getElementById("album");
 const HartistName = document.getElementById("artist");
 const HtrackLink = document.getElementById("link");
 const HlistContent = document.getElementById("list-content");
-const BODY = document.body;
+
+const wrapper = document.getElementById("wrapper");
+const bgWrappper = document.getElementById("bgWrapper")
+let username = "";
+let usernameValue = "";
+const input = document.getElementById("loginput");
+const loginScreen = document.getElementById("login");
 
 let currentSong = {
   title: "",
@@ -21,13 +27,35 @@ let initLoad = true;
 let prevsURL = 0;
 
 myImage.onload = () => {
-  BODY.classList.add("fade-in-out");
+  wrapper.classList.add("fade-in-out");
+  bgWrapper.classList.add("fade-in-out");
   setTimeout(() => {
-    BODY.classList.remove("fade-in-out");
+    wrapper.classList.remove("fade-in-out");
+    bgWrapper.classList.remove("fade-in-out");
   }, 2000);
   setTimeout(() => {
     handleUpdateSong();
   }, 1000);
+};
+
+input.addEventListener("keypress", function (i) {
+  // If the user presses the "Enter" key on the keyboard
+  if (i.key == "Enter") {
+    // Cancel the default action, if needed
+    i.preventDefault();
+    updateUsername();
+    setTimeout(() => {
+      loginScreen.classList.add("fade-out");
+      setTimeout(() => {
+        loginScreen.classList.add("invis");
+      }, 900);
+    }, 4000);
+  }
+});
+
+const updateUsername = () => {
+  const usernameValue = document.getElementById("loginput").value;
+  username = usernameValue;
 };
 
 const getUserRecent = async (user) => {
@@ -48,7 +76,7 @@ const getUserRecent = async (user) => {
   } catch (e) {}
 };
 
-const TrackInfo = async (artist, song) => {
+const getTrackInfo = async (artist, song) => {
   URL = `http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=b956d838d88dca005908329670ad0f3c&artist=${artist}&track=${song}&format=json`;
   try {
     const response2 = await fetch(URL, {
@@ -72,30 +100,32 @@ const isPlaying = async (track) => {
 };
 
 const handleRefreshDisplay = async () => {
-  const data = await getUserRecent("onofel");
-  const URL = await data.recenttracks.track[0].url;
+  if (username != "") {
+    const data = await getUserRecent(username);
+    const URL = await data.recenttracks.track[0].url;
 
-  handleUpdateSong();
-  // check if it is the same song
-  if (prevsURL == URL) return;
-  prevsURL = URL; // set as new prevs
+    handleUpdateSong();
+    // check if it is the same song
+    if (prevsURL == URL) return;
+    prevsURL = URL; // set as new prevs
 
-  UpdateTableRecent(data);
+    UpdateTableRecent(data);
 
-  const songName = data.recenttracks.track[0].name;
-  const artistName = data.recenttracks.track[0].artist["#text"];
-  const cover = data.recenttracks.track[0].image[3]["#text"];
-  const link = data.recenttracks.track[0].url;
-  const album = data.recenttracks.track[0].album["#text"];
+    const songName = data.recenttracks.track[0].name;
+    const artistName = data.recenttracks.track[0].artist["#text"];
+    const cover = data.recenttracks.track[0].image[3]["#text"];
+    const link = data.recenttracks.track[0].url;
+    const album = data.recenttracks.track[0].album["#text"];
 
-  currentSong = {
-    title: songName,
-    artist: artistName,
-    cover: cover,
-    songlink: link,
-    album: album,
-  };
-
+    currentSong = {
+      title: songName,
+      artist: artistName,
+      cover: cover,
+      songlink: link,
+      album: album,
+    };
+  }
+  // console.log("please input a username");
   //   console.log(cover);
   myImage.src = currentSong.cover;
 };
@@ -124,7 +154,9 @@ const UpdateTableRecent = async (data) => {
   for (track of tracks) {
     const name = track.name;
     const artistname = track.artist;
-    trackInfos.push(TrackInfo(artistname["#text"].replaceAll(" ", "+"), name));
+    trackInfos.push(
+      getTrackInfo(artistname["#text"].replaceAll(" ", "+"), name)
+    );
   }
   const info = await Promise.all(trackInfos);
   HlistContent.innerHTML = "";
@@ -189,7 +221,7 @@ const handleUpdateSong = () => {
   HbackgroundImage.src = cover;
   HtrackLink.href = songlink;
   if (album == HtrackName) {
-    HalbumName.innerHTML = ""
+    HalbumName.innerHTML = "";
   } else {
     HalbumName.innerHTML = album;
   }

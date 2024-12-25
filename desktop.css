@@ -195,3 +195,48 @@ body {
     opacity: 100%;
   }
 }
+
+.fade-out {
+  animation: 1s ease-in-out opacity-out;
+}
+
+@keyframes opacity-out {
+  0% {
+    opacity: 100%;
+  }
+  95% {
+    opacity: 0%;
+  }
+}
+
+.login {
+  display: flex;
+  width: 100dvw;
+  height: 100dvh;
+  position: absolute;
+  background-color: black;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  overflow: hidden;
+  gap: 10px;
+  top: 0px;
+  z-index: 5;
+} .login > input {
+    width: 200px;
+    height: 40px;
+    font-size: 30px;
+    box-shadow: none;
+    text-decoration: none;
+    border: none;
+    background-color: black;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    outline: none;
+    border-bottom: 2px solid white;
+}
+
+.invis {
+  pointer-events: none;
+  opacity: 0;
+}

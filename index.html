@@ -3,11 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
-    <link rel="stylesheet" href="desktop.css" />
+    <title>ono's music player</title>
+    <link rel="stylesheet" media="(min-width: 1000px)" href="desktop.css" />
+    <link rel="stylesheet" media="(max-width: 999px)" href="mobile.css" />
   </head>
   <body>
-    <div class="wrapper">
+    <div id="login" class="login">
+        <h1>Enter your Last.fm username:</h1>
+        <input type="text" name="usernamething" id="loginput" placeholder="onofel">
+        <img id="loginButton" src="Send.svg" alt="" onclick="updateUsername()">
+    </div>
+    <div id="wrapper" class="wrapper">
       <div class="metadata">
         <h1 id="title" class="title font-bold"></h1>
         <h2 id="album" class="album font-light"></h2>
@@ -27,7 +33,7 @@
         </h3>
       </div>
     </div>
-    <div class="background">
+    <div id="bgWrapper" class="background">
       <div class="gradient2"></div>
       <img id="background" src="" alt="">
     </div>
