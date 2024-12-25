@@ -263,14 +263,6 @@ body {
   height: 50px;
 }
 
-.main-logo {
-  position: absolute;
-  top: 0px;
-  z-index: 4;
-} .main-logoImg {
-  text-shadow: 0px 1px 1px rgba(0, 0, 0, 1);
-}
-
 .invis {
   pointer-events: none;
   opacity: 0;

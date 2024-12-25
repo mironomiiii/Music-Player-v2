@@ -44,15 +44,6 @@ body {
   display: none;
 }
 
-/* logo */
-.main-logo {
-  position: absolute;
-  bottom: 10px;
-  z-index: 4;
-} .main-logoImg {
-  text-shadow: 0px 0px 5px rgba(0, 0, 0, 1);
-}
-
 .wrapper {
   position: relative;
   width: 300px;
