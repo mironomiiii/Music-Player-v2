@@ -57,7 +57,7 @@ input.addEventListener("keypress", function (i) {
 const updateUsername = () => {
   const usernameValue = document.getElementById("loginput").value;
   username = usernameValue;
-  call.innerHTML = username
+  call.innerHTML = username;
 };
 
 const getUserRecent = async (user) => {
