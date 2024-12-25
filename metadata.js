@@ -7,9 +7,9 @@ const HalbumName = document.getElementById("album");
 const HartistName = document.getElementById("artist");
 const HtrackLink = document.getElementById("link");
 const HlistContent = document.getElementById("list-content");
-
 const wrapper = document.getElementById("wrapper");
 const bgWrappper = document.getElementById("bgWrapper")
+
 let username = "";
 let usernameValue = "";
 const input = document.getElementById("loginput");

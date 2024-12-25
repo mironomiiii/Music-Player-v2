@@ -4,14 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ono's music player</title>
-    <link rel="stylesheet" media="(min-width: 1000px)" href="desktop.css" />
-    <link rel="stylesheet" media="(max-width: 999px)" href="mobile.css" />
+    <link rel="stylesheet" media="(min-width: 900px)" href="desktop.css" />
+    <link rel="stylesheet" media="(max-width: 899px)" href="mobile.css" />
   </head>
   <body>
     <div id="login" class="login">
-        <h1>Enter your Last.fm username:</h1>
+        <div class="loginthing">
+          <h1>Enter your Last.fm username:</h1>
         <input type="text" name="usernamething" id="loginput" placeholder="onofel">
         <img id="loginButton" src="Send.svg" alt="" onclick="updateUsername()">
+        </div>
     </div>
     <div id="wrapper" class="wrapper">
       <div class="metadata">
@@ -22,7 +24,7 @@
         <img id="cover" src="" alt="" />
         <div class="table">
           <div class="gradient"></div>
-          <h3 class="title"><span id="call"></span>'s recent tracks</h3>
+          <h3 class="identifier"><span id="call"></span>'s recent tracks</h3>
           <ul id="list-content"></ul>
         </div>
       </div>
