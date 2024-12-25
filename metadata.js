@@ -15,6 +15,7 @@ let usernameValue = "";
 const input = document.getElementById("loginput");
 const loginScreen = document.getElementById("login");
 const call = document.getElementById("call")
+const loginButton = document.getElementById("loginButton")
 
 let currentSong = {
   title: "",
@@ -45,6 +46,7 @@ input.addEventListener("keypress", function (i) {
     // Cancel the default action, if needed
     i.preventDefault();
     updateUsername();
+    loginButton.classList.add("rotate")
     setTimeout(() => {
       loginScreen.classList.add("fade-out");
       setTimeout(() => {

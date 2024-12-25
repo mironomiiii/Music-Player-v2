@@ -222,21 +222,34 @@ body {
   gap: 10px;
   top: 0px;
   z-index: 5;
-} .login > input {
-    width: 200px;
-    height: 40px;
-    font-size: 30px;
-    box-shadow: none;
-    text-decoration: none;
-    border: none;
-    background-color: black;
-    color: white;
-    font-family: 'Times New Roman', Times, serif;
-    outline: none;
-    border-bottom: 2px solid white;
+}
+.login > input {
+  width: 200px;
+  height: 40px;
+  font-size: 30px;
+  box-shadow: none;
+  text-decoration: none;
+  border: none;
+  background-color: black;
+  color: white;
+  font-family: "Times New Roman", Times, serif;
+  outline: none;
+  border-bottom: 2px solid white;
 }
 
 .invis {
   pointer-events: none;
   opacity: 0;
+}
+
+.rotate {
+  animation: 1s ease-in-out infinite rotatec ;
+}
+@keyframes rotatec {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: 360deg;
+  }
 }
